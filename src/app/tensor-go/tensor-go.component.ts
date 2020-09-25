@@ -41,13 +41,12 @@ export class TensorGoComponent implements OnInit {
     let url='https://gorest.co.in/public-api/users';
     this.userTensogoService.getTensorGoUser(url).subscribe(resdata => {
       this.tensonGoUeser = resdata.data as TensorgoUserModel[];
-      console.log(this.tensonGoUeser);
+      this.viewMode ='view';
     });
 
   }
 
   editUserTensorgo(){
-
     let url=`https://gorest.co.in/public-api/users/${this.editData.id}`;
     let model= {
       "name": this.tensonrGoForm.get('name').value,
@@ -55,13 +54,17 @@ export class TensorGoComponent implements OnInit {
       "gender":this.tensonrGoForm.get('gender').value,
       "status":this.tensonrGoForm.get('status').value
     };
-    console.log("Model hash:", model);
-
     this.userTensogoService.putTensorGoUser(url, model).subscribe(resdata => {
       this.getUserTensorngo();
     });
-
   }
+getEmptyTensonGoForm(){
+  this.tensonrGoForm.get('name').setValue('');
+  this.tensonrGoForm.get('email').setValue('');
+  this.tensonrGoForm.get('gender').setValue('');
+  this.tensonrGoForm.get('status').setValue('');
+}
+
 
   editAction(id: number){
     this.viewMode ='edit';
@@ -79,7 +82,24 @@ export class TensorGoComponent implements OnInit {
   doUpdate(){
     this.viewMode ='view';
     this.editUserTensorgo();
-
   }
-
+  
+  addNewAction(){
+    this.viewMode ='add';
+    this.getEmptyTensonGoForm();
+  }
+  saveNewRecord(){
+    let url=`https://gorest.co.in/public-api/users`;
+    let model= {
+      "name": this.tensonrGoForm.get('name').value,
+      "email": this.tensonrGoForm.get('email').value,
+      "gender": this.tensonrGoForm.get('gender').value,
+      "status": this.tensonrGoForm.get('status').value
+    };
+    this.userTensogoService.postTensorGoUser(url, model).subscribe(resdata => {
+      console.log("addedd", resdata.code);
+      this.getUserTensorngo();
+    });
+  
+  }
 }

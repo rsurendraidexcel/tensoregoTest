@@ -26,6 +26,14 @@ export class TensorGoService {
     return this.httpClient.patch(url, model, httpOptions);
   }
 
+  postTensorGoUser(url, model):Observable<any> {
+    const httpOptions = {
+      headers: this.requestHeaders()
+    };
+    return this.httpClient.post(url, model, httpOptions);
+  }
+
+
 
   requestHeaders(): HttpHeaders {
     const headers: HttpHeaders = new HttpHeaders();

@@ -1,5 +1,4 @@
-<div class="row">
- 
+<div class="page-content">
   <div class="container-fluid" *ngIf="viewMode=='view'">
     <strong class="text-lavel"> User View</strong>
     <table class="table table-bordered">
@@ -18,14 +17,15 @@
           <td> {{tensorgouser.email}}</td>
           <td> {{tensorgouser.gender}}</td>
           <td> {{tensorgouser.status}}</td>
-          <td> <sapn (click)="editAction(tensorgouser.id)" class="edit-style"> Edit</sapn></td>
+          <td> <sapn (click)="editAction(tensorgouser.id)" class="edit-style"> Edit</sapn> &nbsp; <sapn (click)="addNewAction()" class="edit-style"> addNew</sapn></td>
         </tr>
     </tbody>
     </table>
   </div>
 
-  <div class="container-fluid" *ngIf="viewMode=='edit'">
-    <strong class="text-lavel"> User Edit</strong>
+  <!--Edit or SaveNew SameForm-->
+  <div class="container-fluid" *ngIf="viewMode==='edit' ||  viewMode==='add'">
+    <strong class="text-lavel"> User {{viewMode}}</strong>
     <form class="tensorgo-userForm" [formGroup]="tensonrGoForm">
       <div class="form-group">
          <div class="row">
@@ -36,19 +36,30 @@
           <label for="txtEmail" class="lbl-text">Email</label>
           <input type="text" formControlName="email"  class="form-control" aria-describedby="txtEmail" placeholder="Enter Email"/>
          </div>
-         <div class="row">
+         <div class="row" *ngIf="viewMode=='edit'">
           <label for="Gender"  class="lbl-text">Gender</label>
           <input type="text" formControlName="gender" class="form-control" aria-describedby="txtname" placeholder="Enter Gender"/>
          </div>
+
+        <div class="row" *ngIf="viewMode=='add'">
+          <label for="Gender"  class="lbl-text">Gender</label>
+          <select class="form-control" formControlName="gender" aria-describedby="txtstatus">
+            <option value="Female" selected> Female </option>
+            <option value="Male"> Male </option>
+          </select>
+        </div>
+        
          <div class="row">
             <label for="txtstatus" class="lbl-text">Sataus</label>
             <select class="form-control" formControlName="status"  aria-describedby="txtstatus">
-              <option value="Inactive"> Inactive </option>
+              <option value="Inactive">Inactive </option>
               <option value="Active"> Active </option>
             </select>
           </div>
+
           <div class="action-panel">
-            <button type="button" class="btn btn-primary btn-sm" (click)="doUpdate()">Update</button>
+            <button *ngIf="viewMode=='add'" type="button" class="btn btn-primary btn-sm" (click)="saveNewRecord()">Save</button>
+            <button *ngIf="viewMode=='edit'" type="button" class="btn btn-primary btn-sm" (click)="doUpdate()">Update</button>
           </div> 
         </div>   
     </form>
