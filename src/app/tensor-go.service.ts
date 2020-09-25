@@ -31,13 +31,13 @@ export class TensorGoService {
     const headers: HttpHeaders = new HttpHeaders();
     headers.append('Accept', 'application/json');
     headers.append('Content-Type', 'application/json');
-    headers.set('Authorization', this.getTokenTensorGo());
     headers.set('Access-Control-Allow-Origin', '*');
     headers.set('Access-Control-Allow-Headers', 'access-control-allow-headers,access-control-allow-origin');
     return headers;
   }
 
   getTokenTensorGo(): string {
-    return 'Bearer '+ 'c84d0b8e49467025ccf4ee19d4ba37d59e506cf0f03e48802c56c6b1be6a4d61'
+     let tokentString: string = `Bearer c84d0b8e49467025ccf4ee19d4ba37d59e506cf0f03e48802c56c6b1be6a4d61`;
+    return tokentString;
   }
 }
