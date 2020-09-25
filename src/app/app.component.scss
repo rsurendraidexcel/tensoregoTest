@@ -1,0 +1,18 @@
+
+.container{
+  padding-right: 8px;
+  padding-left: 8px;
+  .tensor-header{
+    height: 100px;
+    display: block;
+    width: 100%;
+    border-bottom: 2px solid #d1d1d1;
+  }
+
+  .row {
+    margin-right:0px;
+    margin-left:0px;
+  }
+}
+.heading-mg{ margin-top: 10px;}
+.btn-border{ border-bottom: 2px solid red;}

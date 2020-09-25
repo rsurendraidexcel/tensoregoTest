@@ -1,0 +1,56 @@
+<div class="row">
+ 
+  <div class="container-fluid" *ngIf="viewMode=='view'">
+    <strong class="text-lavel"> User View</strong>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Sataus</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let tensorgouser of tensonGoUeser">
+          <td> {{tensorgouser.name}}</td>
+          <td> {{tensorgouser.email}}</td>
+          <td> {{tensorgouser.gender}}</td>
+          <td> {{tensorgouser.status}}</td>
+          <td> <sapn (click)="editAction(tensorgouser.id)" class="edit-style"> Edit</sapn></td>
+        </tr>
+    </tbody>
+    </table>
+  </div>
+
+  <div class="container-fluid" *ngIf="viewMode=='edit'">
+    <strong class="text-lavel"> User Edit</strong>
+    <form class="tensorgo-userForm" [formGroup]="tensonrGoForm">
+      <div class="form-group">
+         <div class="row">
+          <label for="textName" class="lbl-text">Name</label>
+          <input type="text" formControlName="name" class="form-control" aria-describedby="txtname" placeholder="Enter Name"/>
+         </div>
+         <div class="row">
+          <label for="txtEmail" class="lbl-text">Email</label>
+          <input type="text" formControlName="email"  class="form-control" aria-describedby="txtEmail" placeholder="Enter Email"/>
+         </div>
+         <div class="row">
+          <label for="Gender"  class="lbl-text">Gender</label>
+          <input type="text" formControlName="gender" class="form-control" aria-describedby="txtname" placeholder="Enter Gender"/>
+         </div>
+         <div class="row">
+            <label for="txtstatus" class="lbl-text">Sataus</label>
+            <select class="form-control" formControlName="status"  aria-describedby="txtstatus">
+              <option value="Inactive"> Inactive </option>
+              <option value="Active"> Active </option>
+            </select>
+          </div>
+          <div class="action-panel">
+            <button type="button" class="btn btn-primary btn-sm" (click)="doUpdate()">Update</button>
+          </div> 
+        </div>   
+    </form>
+  </div>
+</div>
