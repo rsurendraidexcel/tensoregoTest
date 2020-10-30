@@ -28,3 +28,6 @@
   display: block;
   
 }
+
+.table tr:nth-child(even) {background: rgba(204, 204, 204, 0.959)}
+.table tr:nth-child(odd) {background: #FFF}

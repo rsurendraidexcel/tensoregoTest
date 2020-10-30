@@ -2,6 +2,7 @@
 .container{
   padding-right: 8px;
   padding-left: 8px;
+  max-width: 100%;
   .tensor-header{
     height: 100px;
     display: block;
@@ -14,5 +15,10 @@
     margin-left:0px;
   }
 }
+.img { border-radius: 10px; margin: 4px;}
 .heading-mg{ margin-top: 10px;}
 .btn-border{ border-bottom: 2px solid red;}
+.bg-header{ 
+  background: rgb(255,255,255);
+  background: linear-gradient(90deg, rgba(255,255,255,1) 17%, rgba(0,121,250,1) 96%);
+}
